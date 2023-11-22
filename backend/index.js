@@ -35,11 +35,12 @@ app.use("/api/subject", require("./routes/subject"));
 app.use("/api/marks", require("./routes/marks"));
 app.use("/api/branch", require("./routes/branch"));
 
-
-app.listen(port, () => {
-  console.log(`Server Listening On http://localhost:${port}`);
+// Define root route handler
 app.get('/', (req, res) => {
   res.send('Welcome to the backend server');
   // Or handle the request accordingly
 });
 
+app.listen(port, () => {
+  console.log(`Server Listening On http://localhost:${port}`);
+});
