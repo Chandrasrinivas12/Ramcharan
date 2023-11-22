@@ -1,10 +1,13 @@
 const connectToMongo = require("./Database/db");
 const express = require("express");
 const app = express();
+const port = process.env.PORT || 5000; // Update the port assignment
+
 connectToMongo();
-const port = 5000 || process.env.PORT;
+
 var cors = require("cors");
 
+// CORS setup
 app.use(cors());
 app.use(express.json()); //to convert request data to json
 
@@ -24,23 +27,7 @@ app.use("/api/subject", require("./routes/subject"));
 app.use("/api/marks", require("./routes/marks"));
 app.use("/api/branch", require("./routes/branch"));
 
+// Listen on the specified port
 app.listen(port, () => {
   console.log(`Server Listening On http://localhost:${port}`);
-
-// For custom URL handling
-const baseUrl = "https://mern-college-app.onrender.com"; // Replace with your Render URL
-
-app.use((req, res, next) => {
-  req.baseUrl = baseUrl;
-  next();
 });
-
-// Additional middleware or routing logic to handle the custom URL
-// For example:
-app.use(`${baseUrl}/api/student/auth`, require("./routes/Student Api/studentCredential"));
-// Continue with other routes similarly
-
-});
-
-
-
