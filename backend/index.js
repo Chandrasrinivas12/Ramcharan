@@ -26,4 +26,21 @@ app.use("/api/branch", require("./routes/branch"));
 
 app.listen(port, () => {
   console.log(`Server Listening On http://localhost:${port}`);
+
+// For custom URL handling
+const baseUrl = "https://mern-college-app.onrender.com"; // Replace with your Render URL
+
+app.use((req, res, next) => {
+  req.baseUrl = baseUrl;
+  next();
 });
+
+// Additional middleware or routing logic to handle the custom URL
+// For example:
+app.use(`${baseUrl}/api/student/auth`, require("./routes/Student Api/studentCredential"));
+// Continue with other routes similarly
+
+});
+
+
+
