@@ -15,7 +15,7 @@ const Marks = () => {
     };
     axios
       .post(
-        `http://localhost:5000/api/marks/getMarks`,
+        `https://mern-college-app.onrender.com`,
         { enrollmentNo: userData.enrollmentNo },
         {
           headers: headers,
