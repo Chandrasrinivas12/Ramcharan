@@ -1,5 +1,6 @@
 const { connectToMongo } = require("./Database/db");
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -13,7 +14,6 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(express.json());
-
 
 // Credential Apis
 app.use("/api/student/auth", require("./routes/Student Api/studentCredential"));
