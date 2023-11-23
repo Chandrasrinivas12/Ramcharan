@@ -7,7 +7,7 @@ const port = process.env.PORT || 5000;
 connectToMongo();
 
 const corsOptions = {
-  origin: "https://mern-college-app.onrender.com", // Replace with your frontend URL
+  origin: "https://collegemansys-oivjzd1vz-chandus-projects-18700343.vercel.app", // Replace with your frontend URL
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true, // Allow sending cookies
 };
