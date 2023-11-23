@@ -1,8 +1,13 @@
 const express = require("express");
+const cors = require("cors"); // Import CORS
 const router = express.Router();
 const adminCredential = require("../../models/Admin/AdminCredentials");
 
+router.use(cors()); // Use CORS for all routes
+
 router.post("/login", async (req, res) => {
+  // Your login route logic
+  // ...
   let { loginid, password } = req.body;
   try {
     let user = await adminCredential.findOne({ loginid });
@@ -29,6 +34,8 @@ router.post("/login", async (req, res) => {
 });
 
 router.post("/register", async (req, res) => {
+  // Your register route logic
+  // ...
   let { loginid, password } = req.body;
   try {
     let user = await adminCredential.findOne({ loginid });
@@ -55,6 +62,8 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/update/:id", async (req, res) => {
+  // Your update route logic
+  // ...
   try {
     let user = await adminCredential.findByIdAndUpdate(req.params.id, req.body);
     if (!user) {
@@ -74,6 +83,8 @@ router.post("/update/:id", async (req, res) => {
 });
 
 router.delete("/delete/:id", async (req, res) => {
+  // Your delete route logic
+  // ...
   try {
     let user = await adminCredential.findByIdAndDelete(req.params.id);
     if (!user) {
