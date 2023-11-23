@@ -12,6 +12,10 @@ const corsOptions = {
   credentials: true, // Allow sending cookies
 };
 
+app.get('/', (req, res) => {
+  res.send('Welcome to the backend API');
+});
+
 app.use(cors(corsOptions));
 app.use(express.json());
 
