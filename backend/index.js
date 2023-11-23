@@ -1,16 +1,19 @@
-
-const connectToMongo = require("./Database/db");
+const { connectToMongo } = require("./Database/db");
 const express = require("express");
 const app = express();
-const port = process.env.PORT || 5000; // Update the port assignment
+const port = process.env.PORT || 5000;
 
 connectToMongo();
 
-var cors = require("cors");
+const corsOptions = {
+  origin: "https://mern-college-app.onrender.com", // Replace with your frontend URL
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true, // Allow sending cookies
+};
 
-// CORS setup
-app.use(cors());
-app.use(express.json()); //to convert request data to json
+app.use(cors(corsOptions));
+app.use(express.json());
+
 
 // Credential Apis
 app.use("/api/student/auth", require("./routes/Student Api/studentCredential"));
@@ -28,7 +31,8 @@ app.use("/api/subject", require("./routes/subject"));
 app.use("/api/marks", require("./routes/marks"));
 app.use("/api/branch", require("./routes/branch"));
 
-// Listen on the specified port
+// ... rest of your routes
+
 app.listen(port, () => {
   console.log(`Server Listening On http://localhost:${port}`);
 });
