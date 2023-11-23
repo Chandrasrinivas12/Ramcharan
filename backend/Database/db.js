@@ -1,4 +1,3 @@
-module.exports = { connectToMongo };
 require("dotenv").config();
 const mongoose = require("mongoose");
 const mongoURI = process.env.MONGODB_URI;
@@ -12,4 +11,4 @@ const connectToMongo = async () => {
   }
 };
 
-module.exports = { connectToMongo };
+module.exports = connectToMongo;
